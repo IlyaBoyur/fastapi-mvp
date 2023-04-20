@@ -1,6 +1,7 @@
 import os
-from pydantic import BaseSettings, PostgresDsn
 from logging import config as logging_config
+
+from pydantic import BaseSettings, PostgresDsn
 
 from core.logger import LOGGING
 

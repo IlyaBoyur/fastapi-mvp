@@ -1,7 +1,7 @@
 import sys
+
 from fastapi import APIRouter
 from fastapi.responses import PlainTextResponse
-
 
 # Объект router, в котором регистрируем обработчики
 router = APIRouter()

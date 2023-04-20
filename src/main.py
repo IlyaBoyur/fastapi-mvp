@@ -4,15 +4,15 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 
-from core import config
-from core.logger import LOGGING
 # Добавляем импорт на ранее созданный модуль
 from api.v1 import base
-
+from core import config
+from core.config import app_settings
+from core.logger import LOGGING
 
 app = FastAPI(
     # Конфигурируем название проекта. Оно будет отображаться в документации
-    title=config.PROJECT_NAME,
+    title=app_settings.app_title,   # название приложение берём из настроек
     # Адрес документации в красивом интерфейсе
     docs_url='/api/openapi',
     # Адрес документации в формате OpenAPI
