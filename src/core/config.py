@@ -10,9 +10,9 @@ logging_config.dictConfig(LOGGING)
 
 
 # Название проекта. Используется в Swagger-документации
-PROJECT_NAME = os.getenv('PROJECT_NAME', 'library')
-PROJECT_HOST = os.getenv('PROJECT_HOST', '0.0.0.0')
-PROJECT_PORT = int(os.getenv('PROJECT_PORT', '8000'))
+PROJECT_NAME = os.getenv("PROJECT_NAME", "library")
+PROJECT_HOST = os.getenv("PROJECT_HOST", "0.0.0.0")
+PROJECT_PORT = int(os.getenv("PROJECT_PORT", "8000"))
 
 
 # Корень проекта
@@ -24,7 +24,7 @@ class AppSettings(BaseSettings):
     database_dsn: PostgresDsn
 
     class Config:
-        env_file = '.env'
+        env_file = ".env"
 
 
 app_settings = AppSettings()

@@ -7,31 +7,25 @@ from fastapi.responses import PlainTextResponse
 router = APIRouter()
 
 
-@router.get('/')
+@router.get("/")
 async def root_handler():
-    return {
-        'version': 'v1',
-        'python': sys.version_info
-    }
+    return {"version": "v1", "python": sys.version_info}
 
-@router.get('/action/{action}')
+
+@router.get("/action/{action}")
 async def action_handler(action):
     return {
-        'action': action,
+        "action": action,
     }
 
 
-@router.get('/filter')
-@router.post('/filter')
+@router.get("/filter")
+@router.post("/filter")
 async def filter_handler(
-    param1: str, 
+    param1: str,
     param2: int | None = None,
 ) -> dict[str, str | int | None]:
-    return {
-        'action': 'filter',
-        'param1': param1,
-        'param2': param2
-    }
+    return {"action": "filter", "param1": param1, "param2": param2}
 
 
 @router.get("/plain_text", response_class=PlainTextResponse)
