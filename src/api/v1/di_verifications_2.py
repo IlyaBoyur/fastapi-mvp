@@ -1,5 +1,7 @@
-from fastapi import APIRouter, Depends, Response, status, HTTPException
+import json
+from fastapi import APIRouter, Depends, Response, status, HTTPException, Header
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
+
 
 DB_USERS = [
     {"id": 1, "name": "John Smith"},
@@ -44,7 +46,7 @@ async def verify_token(creds: HTTPBasicCredentials = Depends(auth)):
         )
 
 
-async def verify_offset(offset: Optional[int] = 0):
+async def verify_offset(offset: int | None = 0):
     print("Validate offset value...")
     if offset < 0 or offset >= len(DB_USERS):
         raise HTTPException(
@@ -53,7 +55,7 @@ async def verify_offset(offset: Optional[int] = 0):
         )
 
 
-async def verify_limit(limit: Optional[int] = 5):
+async def verify_limit(limit: int | None = 5):
     print("Validate limit value...")
     if limit == 0 or limit > 100:
         raise HTTPException(
@@ -62,15 +64,15 @@ async def verify_limit(limit: Optional[int] = 5):
         )
 
 
-async def limit_extractor(limit: Optional[int] = 5):
+async def limit_extractor(limit: int | None = 5):
     print("Extract limit param...")
     return limit
 
 
 async def get_data(
-    q: Optional[str] = "",
+    q: str | None = "",
     limit: int = Depends(limit_extractor),
-    offset: Optional[int] = 0,
+    offset: int | None = 0,
 ):
     print("Generate response data...")
     return DB_USERS[offset : offset + limit]
