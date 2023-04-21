@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Column, DateTime, Integer, String
 
 # Импортируем базовый класс для моделей.
-from db.db import Base
+from src.db.db import Base
 
 
 class Entity(Base):
