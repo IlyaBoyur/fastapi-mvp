@@ -3,7 +3,7 @@ from logging import config as logging_config
 
 from pydantic import BaseSettings, PostgresDsn
 
-from src.core.logger import LOGGING
+from core.logger import LOGGING
 
 # Применяем настройки логирования
 logging_config.dictConfig(LOGGING)
