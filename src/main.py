@@ -23,7 +23,7 @@ app = FastAPI(
 )
 
 # Подключаем роутер к серверу, указав префикс /v1
-app.include_router(base.router, prefix="/api/v1")
+app.include_router(base.api_router, prefix="/api/v1")
 app.include_router(di_examples.router, prefix="/api/v1")
 app.include_router(di_verifications.router, prefix="/api/v1")
 
